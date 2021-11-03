@@ -6,4 +6,15 @@ h1 {
 
 .menu > div{
     margin-right: 2rem;
+
+}
+
+.menu > div> img{
+
+   width:20rem; 
+   height: 15rem;
+}
+
+.kön > div {
+    margin-right: 2rem;
 }

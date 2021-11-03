@@ -3,25 +3,28 @@
 
 <head>
     <title>BurgerOnline</title>
-    <meta charset="utf-8" /> 
+    <meta charset="utf-8" />
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
+<body style="font-family: sans-serif; background-color:rgb(167, 219, 243)">
+    
     <header>
-        HamburgerSpot
+        <h1> Välkommen till BurgerOnline</h1>
     </header>
-    <nav>Menu items</nav>
+    <nav>
+        <!--tom for now-->
+    </nav>
     <main>
         <section>
-           
-                <h1 > Välkommen till BurgerOnline</h1>
-                <h2>Välj din burgare</h2>
-                <p class="entry">Nedan ser du dina valmöjligheter</p>
 
-                <div class="menu">
 
-                <div style="float:left;" >
+            <h2>Välj din burgare</h2>
+            <p class="entry">Nedan ser du dina valmöjligheter (yes its kinda sad on the lowkey)</p>
+
+            <div class="menu">
+
+                <div style="float:left;">
                     <h3>Vegodrömmen </h3>
                     <img src="https://folkofolk.se/sites/default/files/2021-05/vegoburgare_0.jpg" alt="Span"
                         title="Another in-line element" style="width: 300px">
@@ -34,7 +37,7 @@
 
                 <div style="float:left;">
                     <h3>Ostdrömmen</h3>
-                    <img src="https://dynaimage.cdn.cnn.com/cnn/c_fill,g_auto,w_1200,h_675,ar_16:9/https%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F200917151634-national-cheeseburger-day-2020-stock.jpg"
+                    <img src="https://e1.pngegg.com/pngimages/559/311/png-clipart-mcdonald-s-cheese-burger-with-egg-thumbnail.png"
                         alt="Span" title="Another in-line element" style="width:300px">
                     <ul>
                         <li>Innehåller Gluten</li>
@@ -59,13 +62,83 @@
         </section>
 
 
-        <section>
-            <div style="clear:left;">
-                <h2>Kundinformation</h2>
-                <p class="entry">Här kan du lämna uppgifter om dig själv för att kunna göra en beställning</p>
-                <a href="http://www.google.com/">Gå till Google</a>
-            </div>
+        <section id="kontaktinfo">
+            <form>
+                <div style="clear:left;">
+
+                    <h2>Kundinformation</h2>
+                    <p class="entry">Här kan du lämna uppgifter om dig själv för att kunna göra en beställning</p>
+                    <!--<a href="http://www.google.com/">Gå till Google</a>-->
+                    <h3>Utkörningsinformation</h3>
+
+                    <p>
+                        <label for="firstname">Ditt fullständiga namn</label><br>
+                        <input type="text" id="firstname" name="fn" required="required" placeholder="För och efternamn"
+                            style="width: 10rem;">
+                    </p>
+
+                    <p>
+                        <label for="email">Mailadress</label><br>
+                        <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+                    </p>
+                    <p>
+                        <label for="hus">Husnummer</label><br>
+                        <input type="number" id="hus" name="ln" placeholder="Ange numret på din bostad">
+                    </p>
+                </div>
+
+
+
+
+                <div class=kön>
+                    <h4 style="margin-bottom:0;">Kön</h4>
+                    <div style="float:left;">
+                        <p>
+                            <label for="knapp1">kvinna</label><br>
+                            <input type="radio" id="knapp1" name="knappar" >
+                        </p>
+                    </div>
+                    <div style="float:left;">
+                        <p>
+                            <label for="knapp2">man</label><br>
+                            <input type="radio" id="knapp2" name="knappar">
+                        </p>
+                    </div>
+                    <div style="float:left;">
+                        <p>
+                            <label for="knapp3">hemligt</label><br>
+                            <input type="radio" id="knapp3" name="knappar" checked="checked">
+                        </p>
+                    </div>
+                </div>
+
+
+
+                <div style="clear:left;">
+                    <h3>Betalningsinformation</h3>
+                    <label for="betalningsmetod">Hur vill du betala </label>
+                    <be>
+                        <select id="betalningsmetod" name="rcp">
+                            <option>Kortbetalning</option>
+                            <option>Klarna</option>
+                            <option> Swish</option>
+                            <option>Faktura</option>
+                        </select>
+                </div>
+
+                <div>
+                    <h3>Slutför</h3>
+                    <button  type="submit">
+                        <img src="https://icon-library.com/images/sending-icon/sending-icon-11.jpg"
+                            style="width: 2rem;">
+                        Send Info
+                    </button>
+                </div>
+
+            </form>
+
         </section>
+
 
 
 
