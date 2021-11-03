@@ -1,1 +1,9 @@
 /*empty*/
+h1 {
+    font-size: 4.0rem;
+
+}
+
+.menu > div{
+    margin-right: 2rem;
+}
