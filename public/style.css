@@ -1,20 +1,97 @@
-/*empty*/
-h1 {
-    font-size: 4.0rem;
 
+@import 'https://fonts.googleapis.com/css?family=Pacifico|Dosis';
+
+body{
+    font-family: Arial;
+    
 }
 
-.menu > div{
+
+
+
+.header {
+    
+    background: url('https://metromidsayap-water.gov.ph/wp-content/uploads/2016/11/Header-Background.jpg');
+    
+    padding:3rem;
+    margin-left: 2rem;
     margin-right: 2rem;
-
+    text-align: center;
+    
 }
 
-.menu > div> img{
 
-   width:20rem; 
-   height: 15rem;
-}
 
-.kön > div {
+
+h1 {font-size: 6vh;}
+h2 {font-size: 4vh;}
+p{font-size: 2.5vh;}
+
+section{
+    margin-left: 2rem;
     margin-right: 2rem;
 }
+
+
+
+
+.helamenyn{
+    overflow: hidden;
+    background-color:rgb(125, 114, 173);
+}
+
+.helamenyn>p{
+    color:white
+}
+
+.helamenyn>h2{
+    color: white;
+}
+.helamenyn>div>h3{
+color: white;
+}
+.helamenyn>div>ul{
+    color: white;
+    }
+
+.helamenyn>div{
+    float:left;
+}
+
+.helamenyn{ border-style: dotted; border-color: white; margin: 1.5rem; padding:1.5rem}
+
+.helamenyn > div{ padding: 1.5rem;}
+
+.helamenyn > div > img{ width: 20rem; height: 15rem;}
+
+.kundinfo{
+    background-color:rgb(146, 205, 223);
+    clear: left;
+    border-style: dotted; border-color: black;
+}
+
+.kundinfo{margin: 1.5rem; padding:1.5rem}
+
+
+#allergi {
+    font-weight: bolder;
+}
+
+button:hover {
+
+ background-color: rgb(137, 168, 235);
+ cursor: pointer;
+ }
+
+#firstname{
+   width: 12rem; height: 2rem;
+}
+#email{
+    width: 12rem; height: 2rem;
+ }
+ #hus{
+    width: 12rem; height: 2rem;
+ }
+ #payment{
+    width: 12rem; height: 2rem;
+ }
