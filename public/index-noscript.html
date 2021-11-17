@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+    <title>BurgerOnline</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+
+    <div class="header">
+        <h1> Välkommen till BurgerOnline</h1>
+    </div>
+
+
+
+    <main>
+
+
+        <section class="helamenyn">
+
+            <h2>Välj din burgare</h2>
+            <p>Nedan ser du dina valmöjligheter (yes its kinda sad on the lowkey)</p>
+            <div class="wrapper">
+
+                <div class="div1">
+                    <h3>Vegodrömmen </h3>
+                    <img src="https://folkofolk.se/sites/default/files/2021-05/vegoburgare_0.jpg" alt="Span"
+                        title="Another in-line element" style="width: 300px">
+                    <ul>
+
+                        <li>Innehåller<span id="allergi"> gluten</span></li>
+                        <li>Fri från <span id="allergi">laktos</span></li>
+                        <li>Kalorier <span id="kCal">300</span></li>
+
+                    </ul>
+                </div>
+
+                <div class="div2">
+                    <h3>Ostdrömmen</h3>
+                    <img src="https://umarka.sk/wp-content/uploads/2019/09/portfolio_single_01-4.jpg" alt="Span"
+                        title="Another in-line element" style="width:300px">
+                    <ul>
+
+                        <li>Innehåller <span id="allergi">gluten</span></li>
+                        <li>Innehåller <span id="allergi">laktos</span></li>
+                        <li>Kalorier <span id="kCal">500</span></li>
+
+                    </ul>
+                </div>
+
+                <div class ="div3">
+                    <h3>BBQdrömmen</h3>
+                    <img src="https://hips.hearstapps.com/del.h-cdn.co/assets/15/24/1434148038-burgers-06.jpg"
+                        alt="Span" title="Another in-line element" style="width: 260px">
+                    <ul>
+                        <li>Innehåller<span id="allergi"> gluten</span></li>
+                        <li>Innehåller <span id="allergi">laktos</span></li>
+                        <li>Kalorier <span id="kCal">250</span></li>
+                        <li>STARK</li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </section>
+
+
+
+
+
+        <section class="kundinfo">
+            <h2>Kundinformation</h2>
+            <p>Här kan du lämna uppgifter om dig själv för att kunna göra en beställning</p>
+            <h3>Utkörningsinformation</h3>
+            <form>
+
+                <p>
+                    <label for="firstname">Ditt fullständiga namn</label><br>
+                    <input type="text" id="firstname" name="fn" required="required" placeholder="För och efternamn">
+                </p>
+
+                <p>
+                    <label for="email">Mailadress</label><br>
+                    <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+                </p>
+                <p>
+                    <label for="hus">Husnummer</label><br>
+                    <input type="number" id="hus" name="ln" placeholder="Ange numret på din bostad">
+                </p>
+
+
+                <p>
+                    <label for="payment">Betalningsalternativ</label><br>
+                    <select id="payment" name="pm">
+                        <option>Kort</option>
+                        <option selected="selected">Swish</option>
+                        <option>Klarna</option>
+                        <option>Faktura</option>
+                    </select>
+                </p>
+
+                <p>
+                <h3>Kön</h3>
+                <input type="radio" id="female" name="gender" value="female">
+                <label for="female">Kvinna</label><br>
+                <input type="radio" id="male" name="gender" value="male">
+                <label for="male">Man</label><br>
+                <input type="radio" id="ickebinär" name="gender" value="ickebinär">
+                <label for="ickebinär">Ickebinär</label><br>
+                <input type="radio" id="nogender" name="gender" value="nogender" checked="checked">
+                <label for="nogender">Vill inte dela med mig</label><br>
+                </p>
+
+
+
+
+                <div>
+                    <h3>Slutför</h3>
+                    <button type="submit" id="slutför">
+                        <img src="https://icon-library.com/images/sending-icon/sending-icon-11.jpg"
+                            style="width: 2rem;">
+                        Slutför
+                    </button>
+                </div>
+            </form>
+
+        </section>
+
+
+    </main>
+
+
+
+    <footer>
+        <hr> &copy; 2021 Alice Gardell Inc.
+    </footer>
+</body>
+
+</html>

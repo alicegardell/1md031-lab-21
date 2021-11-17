@@ -32,37 +32,34 @@ section{
     margin-right: 2rem;
 }
 
+.wrapper{
+    display: grid;
+    grid-gap:10vw; 
+    grid-template-columns: 15rem 15rem 15rem;
+    align-content: center;
+    
+}
+.helamenyn>.wrapper>div>img{ width: 20vw; height: 30vh;}
 
+.div1{ grid-column: 1 / span 1;}
+.div2{ grid-column: 2 / span 1;}
+.div3{ grid-column: 3 / span 1;}
 
 
 .helamenyn{
     overflow: hidden;
     background-color:rgb(125, 114, 173);
+    color:white;
 }
 
-.helamenyn>p{
-    color:white
-}
 
-.helamenyn>h2{
-    color: white;
-}
-.helamenyn>div>h3{
-color: white;
-}
-.helamenyn>div>ul{
-    color: white;
-    }
+.helamenyn>div{float:left;}
 
-.helamenyn>div{
-    float:left;
-}
+.helamenyn{border-style: dotted; border-color: white; margin: 1.5rem; padding:1.5rem}
 
-.helamenyn{ border-style: dotted; border-color: white; margin: 1.5rem; padding:1.5rem}
+.helamenyn > div{padding: 1.5rem;}
 
-.helamenyn > div{ padding: 1.5rem;}
-
-.helamenyn > div > img{ width: 20rem; height: 15rem;}
+.helamenyn > div > img{width: 30rem; height: 15rem;}
 
 .kundinfo{
     background-color:rgb(146, 205, 223);
@@ -95,3 +92,5 @@ button:hover {
  #payment{
     width: 12rem; height: 2rem;
  }
+
+.kön{margin-bottom: 0rem;}
