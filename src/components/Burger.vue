@@ -1,39 +1,36 @@
 <template>
   <div> 
     
-          <h3 v-bind:key=burger.name> {{burger.name}}</h3>
-          <img v-bind:src="burger.url" alt="Span" style="width: 20vw">
+          <h3 v-bind:key=burger.name>{{burger.name}}</h3>
+          <img v-bind:src="burger.url"  style="width: 20vw">
           <ul>
-            <li v-if="burger.laktos"> EJ <span class="innehåll">laktosfri</span></li>
-            <li v-else>Laktos<span class="innehåll">fri</span></li>
-            <li v-if="burger.gluten"> EJ <span class="innehåll">glutenfri</span></li>
-            <li v-else>Gluten<span class="innehåll">fri</span></li>
+            <li v-if="burger.laktos"> Innehåller <span class="allergen">laktos</span></li>
+           
+            <li v-if="burger.gluten"> Innehåller <span class="allergen">gluten</span></li>
+
 
             <li v-bind:key=burger.kCal> {{burger.kCal }} kalorier</li>
 
           </ul>
 
-          
-         
           <div> 
           
-            <button v-on:click="raiseAmount(key)">
-              Add Burger
+            <button v-on:click="addBurger">
+              Lägg till burgare
             </button>
 
-            <button v-on:click ="lessAmount(key)">
-              Remove Burger
+            <button v-on:click ="removeBurger">
+             Ta bort burgare
             </button>
 
           </div>
-          <p> Antal burgare {{amountOrdered}}</p>
+          <p> Antal {{burger.name }}: {{ amountOrdered}}</p>
          
   </div>
         
 </template>
 
 <script>
-
 
 
 export default {
@@ -50,23 +47,26 @@ export default {
 
 methods: {
   
-  raiseAmount: function(){
+  addBurger: function(){
     this.amountOrdered++;
-    console.log (this.burger);
+    this.$emit('orderedBurger', 
+      {name: this.burger.name,
+      amount: this.amountOrdered
+      }
+      );
+
 
   },
-  lessAmount: function(){
+  removeBurger: function(){
+    if(this.amountOrdered<=0 ){
+    
+      return;
+    }
     this.amountOrdered--;
-    console.log ( this.burger);
+  
   },
 
-  addBurger: function () {
-  this.amountOrdered += 1;
-  this.$emit('orderedBurger', { name:   this.burger.name, 
-                                amount: this.amountOrdered 
-                              }
-  );
-},
+  
 }
 }
 
@@ -75,7 +75,9 @@ methods: {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 
-
+.allergen{
+   font-weight: bold;
+}
 
 
 

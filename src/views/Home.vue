@@ -1,15 +1,17 @@
 <template>
+
   
-  <div class="header">
+  <section class="header">
         <h1> Välkommen till BurgerOnline</h1>
-    </div>
+        <img src ='https://metromidsayap-water.gov.ph/wp-content/uploads/2016/11/Header-Background.jpg'/>
+    </section>
 
     <main>
 
         <section class="helamenyn">
 
             <h2>Välj din burgare</h2>
-            <p>Nedan ser du dina valmöjligheter (yes its kinda sad on the lowkey)</p>
+            <p>Nedan ser du dina valmöjligheter</p>
             <div class="wrapper">
                 <Burger class="box" v-for="burger in burgers"
                 v-bind:burger="burger"
@@ -36,15 +38,22 @@
                     <label for="email">Mailadress</label><br>
                     <input type="email" id="email" v-model="email" required="required" placeholder="E-mail address">
                 </p>
-                <p>
-                    <label for="hus">Husnummer</label><br>
-                    <input type="number" id="hus" v-model="husnummer" placeholder="Ange numret på din bostad">
-                </p>
+                
+                <h3>Välj utkörningsadress</h3>
+                <p> Scrolla i rutan och klicka för att välja</p>
+                
+            <div id = "mapbox">
+                  
+              <div id="map" v-on:click="setLocation">{{location}}
+                    <div v-bind:style="{left: location.x + 'px',top: location.y + 'px',}">T
+              </div>
+                   
+              </div>
 
-
+            </div>
                 <p>
-                    <label for="payment">Betalningsalternativ</label><br>
-                    <select id="payment" v-model="pm">
+                    <label for="Betalsätt">Betalningsalternativ</label><br>
+                    <select id="Betalsätt" v-model="pm">
                         <option>Kort</option>
                         <option selected="selected">Swish</option>
                         <option>Klarna</option>
@@ -54,18 +63,19 @@
               
                 <div>
                   <h3>Kön</h3>
-                  <input type="radio" id="female" v-model="kvinna" value="kvinna">
+                  <input type="radio" id="female" v-model="valt" value="kvinna">
                   <label for="female">Kvinna</label><br>
-                  <input type="radio" id="male" v-model="man" value="man">
+                  <input type="radio" id="male" v-model=" valt" value="man">
                   <label for="male">Man</label><br>
-                  <input type="radio" id="ickebinär" v-model="ickebinär" value="ickebinär" >
+                  <input type="radio" id="ickebinär" v-model="valt" value="ickebinär" >
                   <label for="ickebinär">Ickebinär</label><br>
-                  <input type="radio" id="nogender" v-model="inget" value="nogender" checked="checked">
+                  <input type="radio" id="nogender" v-model="valt" value="nogender" checked="checked">
                   <label for="nogender">Vill inte dela med mig</label><br>
                 </div>
                 
                 <div>
-                    <h3>Slutför</h3>
+                  <hr >
+                    <h3>Slutför och beställ</h3>
                     <button v-on:click="markDone(key)" >
                         <img src="https://icon-library.com/images/sending-icon/sending-icon-11.jpg"
                             style="width: 2rem;">
@@ -75,11 +85,14 @@
                 </div>
             </form>
         </section>
+      
     </main>
 
     <footer>
         <hr> &copy; 2021 Alice Gardell Inc.
     </footer>
+
+    
  
 
 </template>
@@ -117,23 +130,56 @@ export default {
   },
   data: function () {
     return {
-      burgers: menu.menu
+      burgers: menu.menu,
+    
+    
+      gdprInfo: {},
+      fullOrder: {},
+      location: {x:0,y:0},
+      helanamn: "",
+      email: "",
+      pm: "Swish", 
+      valt:""
+
     }
   },
   methods: {
+
     getOrderNumber: function () {
-      return Math.floor(Math.random()*100000);
+      return Math.floor(Math.random()*100);
     },
 
     markDone:function() {
-      console.log( this.helanamn, this.email,this.husnummer,this.pm, this.inget, this.ickebinär, this.man, this.kvinna );
+        
+        this.gdprInfo = {
+        Namn: this.helanamn,
+        Email: this.email,
+        Betalsätt: this.pm,
+        Kön: this.valt
+      }
+
+      console.log( this.fullOrder);
+
+      socket.emit("addOrder",{
+        orderId: this.getOrderNumber(),
+        details: this.location,
+        orderItems: this.fullOrder,
+        gdprOrder: this.gdprInfo
+
+      });
+    
+    alert("Ordern har skickats")
+      
     },
+
     addToOrder: function (event) {
-  this.orderedBurger[event.name] = event.amount;
+      this.fullOrder[event.name] = event.amount;
+    console.log("event.amount: " + event.amount);
+
   },
 
 
-    addOrder: function (event) {
+    /*addOrder: function (event) {
       var offset = {x: event.currentTarget.getBoundingClientRect().left,
                     y: event.currentTarget.getBoundingClientRect().top};
       socket.emit("addOrder", { orderId: this.getOrderNumber(),
@@ -142,6 +188,12 @@ export default {
                                 orderItems: ["Beans", "Curry"]
                               }
                  );
+    }, */
+    setLocation: function (event) {
+      var offset = {x: event.currentTarget.getBoundingClientRect().left,
+      y: event.currentTarget.getBoundingClientRect().top,};
+      this.location = {x: event.clientX - 10 - offset.x, //only storing the location of click 
+      y: event.clientY - 10 - offset.y,};
     }
   }
 }
@@ -149,30 +201,66 @@ export default {
 </script>
 
 <style>
-  #map {
-    width: 400px;
-    height: 400px;
-    background-color: red;
 
-  }
-  body{
-    font-family: Arial;
+#mapbox{
     
+    overflow:scroll;
+    width: 600px;
+    height: 200px;
+    border-style:groove; border-color: rgb(125, 114, 180); border-width:7px;  
+}
+  #map {
+    width: 1920px;
+    height: 1028px;
+    position: relative;
+    background: url("/img/polacks.jpg");
+  }
+  #map div {
+  position: absolute;
+  background: black;
+  color: white;
+  border-radius: 10px;
+  width: 20px;
+  height: 20px;
+  text-align: center;
 }
 
+
+  body {
+    font-family: Arial, Helvetica, sans-serif; 
+    }
+
+
+
 .header {
-    
-    background: url('https://metromidsayap-water.gov.ph/wp-content/uploads/2016/11/Header-Background.jpg');
-    
-    padding:3rem;
+  
     margin-left: 2rem;
     margin-right: 2rem;
     text-align: center;
+    overflow:hidden;
     
 }
 
-h1 {font-size: 6vh;}
+.header>img{
+opacity: 0.4;
+width: 100%; 
+height: auto; 
+}
+
+.header>h1{
+  position: absolute;
+  padding: 1.7em;
+  padding-left:13rem;
+  z-index:10;
+  
+}
+
+
+
+
+h1 {font-size: 8vh;}
 h2 {font-size: 4vh;}
+h3 {font-size: 3.2vh;}
 p {font-size: 2.5vh;}
 
 section{
@@ -196,10 +284,11 @@ section{
 
 .helamenyn{
     overflow: hidden;
-    background-color:rgb(125, 114, 173);
+    background-color:rgb(125, 114, 170);
     color:white;
 }
 
+p {font-size: 2.2vh;}
 
 .helamenyn>div{float:left;}
 
@@ -210,7 +299,7 @@ section{
 
 
 .kundinfo{
-    background-color:rgb(146, 205, 223);
+    background-color:rgb(150, 205, 223);
     clear: left;
     border-style: dotted; border-color: black;
 }
@@ -230,12 +319,35 @@ button:hover {
 #email{
     width: 12rem; height: 2rem;
  }
- #hus{
-    width: 12rem; height: 2rem;
- }
- #payment{
+
+ #Betalsätt{
     width: 12rem; height: 2rem;
  }
 
 .kön{margin-bottom: 0rem;}
+
+#female{
+  border-radius: 15px;
+  width:20px;
+  height:20px;
+  
+}
+#male{
+  border-radius: 15px;
+  width:20px;
+  height:20px;
+}
+#ickebinär{
+  border-radius: 15px;
+  width:20px;
+  height:20px;
+}
+#nogender{
+  border-radius: 15px;
+  width:20px;
+  height:20px;
+}
 </style>
+
+
+

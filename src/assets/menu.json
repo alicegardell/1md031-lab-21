@@ -4,14 +4,14 @@
             "name": "Vegodrömmen",
             "url": "https://folkofolk.se/sites/default/files/2021-05/vegoburgare_0.jpg",
             "kCal": 300,
-            "laktos": false,
+            "laktos": true,
             "gluten": true
         },
         {
             "name": "Ostdrömmen",
             "url": "https://umarka.sk/wp-content/uploads/2019/09/portfolio_single_01-4.jpg",
             "kCal": 500,
-            "laktos": false,
+            "laktos": true,
             "gluten": false
         },
         {
