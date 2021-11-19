@@ -1,3 +1,5 @@
+
+
 <template>
 
   
@@ -104,6 +106,7 @@ import Burger from '../components/Burger.vue'
 import io from 'socket.io-client'
 
 const socket = io();
+ document.title = 'BurgerOnline'
 
 /*
 function MenuItem(name, url, kCal, laktos, gluten) {
