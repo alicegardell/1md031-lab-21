@@ -24,7 +24,7 @@
             </button>
 
           </div>
-          <p> Antal {{burger.name }}: {{ amountOrdered}}</p>
+          <p> Antal {{burger.name}}: {{amountOrdered}}</p>
          
   </div>
         

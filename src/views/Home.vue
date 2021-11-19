@@ -41,10 +41,11 @@
                 
                 <h3>Välj utkörningsadress</h3>
                 <p> Scrolla i rutan och klicka för att välja</p>
+                {{location}}
                 
             <div id = "mapbox">
                   
-              <div id="map" v-on:click="setLocation">{{location}}
+              <div id="map" v-on:click="setLocation">
                     <div v-bind:style="{left: location.x + 'px',top: location.y + 'px',}">T
               </div>
                    
@@ -215,7 +216,7 @@ export default {
     position: relative;
     background: url("/img/polacks.jpg");
   }
-  #map div {
+  #map>div {
   position: absolute;
   background: black;
   color: white;
